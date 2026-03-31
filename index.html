@@ -8,3 +8,362 @@
   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
   :root{--bg:#0f0f0f;--surface:#1a1a1a;--surface2:#222;--border:#2e2e2e;--accent:#00e5a0;--blue:#4d8eff;--text:#f0f0f0;--muted:#777;--error:#ff4f4f;--warn:#ffaa00;--qb:#2CA01C}
   *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
+  header{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--border)}
+  .wm{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.1em}
+  .wm span{color:var(--muted)}
+  .hst{margin-left:auto;display:flex;gap:12px;align-items:center}
+  .pill{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:11px;font-family:'DM Mono',monospace;color:var(--muted)}
+  .pill.ok{border-color:rgba(0,229,160,.3);color:var(--accent)}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--border)}
+  .dot.on{background:var(--accent);box-shadow:0 0 5px var(--accent)}
+  .layout{display:grid;grid-template-columns:290px 1fr;min-height:calc(100vh - 49px)}
+  .sb{border-right:1px solid var(--border);padding:18px;display:flex;flex-direction:column;gap:18px;overflow-y:auto}
+  .main{padding:24px;display:flex;flex-direction:column;gap:18px}
+  .st{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .f{display:flex;flex-direction:column;gap:4px;margin-bottom:9px}
+  .f label{font-size:11px;color:var(--muted)}
+  .f input,.f select{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:12px;outline:none;width:100%;transition:border-color .15s}
+  .f input:focus,.f select:focus{border-color:var(--accent)}
+  .hint{font-size:10px;color:var(--muted);line-height:1.5;margin-top:2px}
+  .div{height:1px;background:var(--border)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 14px;border-radius:6px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .ba{background:var(--accent);color:#000;width:100%}
+  .ba:not(:disabled):hover{background:#00ffb3;transform:translateY(-1px)}
+  .bq{background:var(--qb);color:#fff;width:100%}
+  .bq:not(:disabled):hover{background:#35b425;transform:translateY(-1px)}
+  .bs{padding:5px 10px;font-size:11px;background:var(--surface2);color:var(--accent);border:1px solid var(--border)}
+  .bs:hover{border-color:var(--accent)}
+  .msg{font-size:11px;margin-top:5px;min-height:14px}
+  .ok-t{color:var(--accent)}.err-t{color:var(--error)}.warn-t{color:var(--warn)}
+  .qpanel{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px;font-size:12px;line-height:1.6}
+  .qpanel.conn{border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04)}
+  .steps{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+  .step{display:flex;gap:7px;align-items:flex-start}
+  .sn{width:16px;height:16px;border-radius:50%;background:var(--accent);color:#000;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+  .step a{color:var(--accent)}
+  .dz{border:2px dashed var(--border);border-radius:12px;padding:40px 28px;text-align:center;cursor:pointer;transition:all .2s;background:var(--surface);position:relative}
+  .dz:hover,.dz.over{border-color:var(--accent);background:rgba(0,229,160,.03)}
+  .dz input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+  .dz h3{font-size:14px;font-weight:500;margin:8px 0 3px}
+  .dz p{font-size:12px;color:var(--muted)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+  .ch{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+  .ch h3{font-size:13px;font-weight:500;flex:1}
+  .cb{padding:14px 16px}
+  .badge{font-family:'DM Mono',monospace;font-size:10px;padding:2px 6px;border-radius:3px;background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+  .badge.gr{background:rgba(0,229,160,.1);color:var(--accent);border-color:rgba(0,229,160,.25)}
+  .badge.bl{background:rgba(77,142,255,.1);color:var(--blue);border-color:rgba(77,142,255,.25)}
+  .badge.yw{background:rgba(255,170,0,.1);color:var(--warn);border-color:rgba(255,170,0,.25)}
+  .mg{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px}
+  .mb{background:var(--surface2);border-radius:6px;padding:9px 11px}
+  .ml{font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:2px}
+  .mv{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent)}
+  .mv.lg{font-size:14px;color:var(--text)}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{padding:6px 8px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400;border-bottom:1px solid var(--border)}
+  td{padding:8px 8px;border-bottom:1px solid rgba(255,255,255,.03)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:rgba(255,255,255,.02)}
+  td.mo{font-family:'DM Mono',monospace;color:var(--accent)}
+  td.dm{color:var(--muted)}
+  td.r{text-align:right;font-family:'DM Mono',monospace}
+  tfoot td{padding:10px 8px;border-top:1px solid var(--border);font-weight:600}
+  .lb{background:var(--surface2);border-radius:7px;padding:11px 13px;font-family:'DM Mono',monospace;font-size:11px;line-height:1.9;max-height:160px;overflow-y:auto}
+  .l-ok{color:var(--accent)}.l-err{color:var(--error)}.l-info{color:var(--blue)}.l-warn{color:var(--warn)}
+  .sb-ok{background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.25);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px}
+  .sb-ok h3{font-size:14px;font-weight:500;color:var(--accent);margin-bottom:2px}
+  .sb-ok p{font-size:12px;color:var(--muted)}
+  .sb-ok a{color:var(--accent);font-family:'DM Mono',monospace;font-size:12px}
+  .eb{background:rgba(255,79,79,.07);border:1px solid rgba(255,79,79,.25);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--error)}
+  .spin{display:inline-block;width:12px;height:12px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp .55s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .hidden{display:none!important}
+  details summary{font-size:11px;color:var(--muted);cursor:pointer;margin-top:10px}
+  .info-box{background:rgba(77,142,255,.07);border:1px solid rgba(77,142,255,.2);border-radius:8px;padding:12px 14px;font-size:12px;line-height:1.6;color:#a0b8ff}
+</style>
+</head>
+<body>
+<header>
+  <div class="wm">Food<span>-</span>Pak <span>/ PO→QBO</span></div>
+  <div class="hst">
+    <div class="pill" id="pill-c"><div class="dot" id="dot-c"></div><span id="lbl-c">Claude API</span></div>
+    <div class="pill" id="pill-q"><div class="dot" id="dot-q"></div><span id="lbl-q">QuickBooks</span></div>
+  </div>
+</header>
+<div class="layout">
+  <div class="sb">
+    <div>
+      <div class="st">Claude API Key</div>
+      <div class="f"><input type="password" id="ck" placeholder="sk-ant-api03-..." /></div>
+      <button class="btn bs" onclick="testClaude()">Test</button>
+      <div class="msg" id="cm"></div>
+    </div>
+    <div class="div"></div>
+    <div>
+      <div class="st">QuickBooks</div>
+      <div id="qp-setup">
+        <div class="qpanel" style="margin-bottom:10px">
+          <div class="steps">
+            <div class="step"><div class="sn">1</div><div>Go to <a href="https://developer.intuit.com" target="_blank">developer.intuit.com</a> → PO Submittal app → Keys &amp; credentials → Development tab</div></div>
+            <div class="step"><div class="sn">2</div><div>Copy your <strong>Client ID</strong> and <strong>Client Secret</strong></div></div>
+            <div class="step"><div class="sn">3</div><div>In QBO: Settings → Account and Settings → scroll to bottom → copy <strong>Company ID</strong></div></div>
+            <div class="step"><div class="sn">4</div><div>Click Connect — sign in to QBO in the popup, then copy the access token from the OAuth Playground page back here</div></div>
+          </div>
+        </div>
+        <div class="f"><label>Client ID</label><input type="text" id="qci" placeholder="AB..." value="ABiA6OppO3t9lKobVirJElmYRbKUVxSgFfzjRyrQINElwnIH2G" /></div>
+        <div class="f"><label>Client Secret</label><input type="password" id="qcs" placeholder="..." /></div>
+        <div class="f">
+          <label>Company ID (Realm ID)</label>
+          <input type="text" id="qri" placeholder="9341456737227500" value="9341456737227500" />
+          <div class="hint">QBO → ⚙ Settings → Account and Settings → bottom of page</div>
+        </div>
+        <div class="f"><label>Environment</label><select id="qenv"><option value="production">Production</option><option value="sandbox" selected>Sandbox (Development)</option></select></div>
+        <button class="btn bq" id="conn-btn" onclick="startOAuth()">🔗 Connect to QuickBooks</button>
+        <div class="msg" id="qm"></div>
+        <details>
+          <summary>Paste token manually</summary>
+          <div style="margin-top:8px">
+            <div class="f"><label>Access Token</label><input type="password" id="mtok" placeholder="Paste bearer token..." /></div>
+            <div class="hint" style="margin-bottom:6px">After clicking Connect and approving in QBO, the OAuth Playground will show an access token. Copy and paste it here.</div>
+            <button class="btn bs" onclick="useManualToken()">Use This Token</button>
+          </div>
+        </details>
+      </div>
+      <div id="qp-conn" class="hidden">
+        <div class="qpanel conn">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <span style="font-size:20px">✅</span>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--accent)" id="co-name">Connected</div>
+              <div style="font-family:DM Mono,monospace;font-size:10px;color:var(--muted)">Token expires in <span id="tok-exp" style="color:var(--warn)">—</span></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="btn bs" onclick="doDisconnect()">Disconnect</button>
+            <button class="btn bs" id="ref-btn" onclick="doRefresh()">Refresh Token</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="div"></div>
+    <div>
+      <div class="st">Vendor</div>
+      <div class="f"><label>Vendor name in QBO (exact match)</label><input type="text" id="vn" value="Mercury Plastics" /></div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="info-box" id="setup-hint">
+      👋 <strong>Setup:</strong> (1) Enter Claude API key → Test. (2) Your QBO credentials &amp; Realm ID are pre-filled. (3) Click Connect to QuickBooks, approve in the popup. (4) On the Playground page that opens, your <strong>Access Token</strong> is already shown — copy it and paste into the manual token field below the Connect button. Done!
+    </div>
+    <div class="dz" id="dz">
+      <input type="file" accept=".pdf" id="fi" onchange="handleFile(this.files[0])" />
+      <span style="font-size:32px">📄</span>
+      <h3>Drop PO PDF here</h3>
+      <p>Southeastern Paper Group / BradyPlus purchase orders</p>
+    </div>
+    <div id="pv" class="hidden">
+      <div class="card">
+        <div class="ch">
+          <h3>Parsed Purchase Order</h3>
+          <span class="badge bl" id="pv-num"></span>
+          <span class="badge" id="pv-st"></span>
+          <button class="btn bs" onclick="clearAll()" style="margin-left:auto">✕ Clear</button>
+        </div>
+        <div class="cb">
+          <div class="mg">
+            <div class="mb"><div class="ml">Vendor</div><div class="mv" id="pv-ven" style="font-size:11px"></div></div>
+            <div class="mb"><div class="ml">PO Date</div><div class="mv" id="pv-dt"></div></div>
+            <div class="mb"><div class="ml">Due Date</div><div class="mv" id="pv-du"></div></div>
+            <div class="mb"><div class="ml">Ship To</div><div class="mv" id="pv-sh" style="font-size:10px;line-height:1.4"></div></div>
+            <div class="mb"><div class="ml">Customer PO#</div><div class="mv" id="pv-cp"></div></div>
+            <div class="mb"><div class="ml">Total</div><div class="mv lg" id="pv-tot"></div></div>
+          </div>
+          <table>
+            <thead><tr><th>#</th><th>Mercury #</th><th>Description</th><th>CS</th><th>Units</th><th style="text-align:right">$/Unit</th><th style="text-align:right">Amount</th></tr></thead>
+            <tbody id="lb"></tbody>
+            <tfoot><tr><td colspan="5"></td><td class="r dm" style="font-size:10px">TOTAL</td><td class="r" id="lt"></td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+      <button class="btn ba" id="sub-btn" onclick="submitToQBO()" style="margin-top:6px">⚡ Create Purchase Order in QuickBooks</button>
+    </div>
+    <div id="log-card" class="card hidden"><div class="ch"><h3>Log</h3></div><div class="cb"><div class="lb" id="log"></div></div></div>
+    <div id="ok-card" class="hidden"><div class="sb-ok"><div style="font-size:28px">✅</div><div><h3>Purchase Order Created!</h3><p id="ok-det"></p><a id="ok-link" href="#" target="_blank">Open in QuickBooks →</a></div></div></div>
+    <div id="err-card" class="hidden"><div class="eb" id="err-det"></div></div>
+  </div>
+</div>
+<script>
+let po=null,tok=null;
+const REDIRECT='https://developer.intuit.com/v2/OAuth2Playground/RedirectUrl';
+window.onload=()=>{
+  ['ck','qci','qcs','qri','qenv','vn'].forEach(id=>{const v=localStorage.getItem('fp_'+id);if(v)el(id).value=v;});
+
+  // Pre-load current sandbox token if none saved
+  if (!localStorage.getItem('fp_tok')) {
+    const preToken = 'eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwieC5vcmciOiJIMCJ9..VzTL3NGyFEiLD6efsjvdvQ.Eo_RLLK5WhYWPkz0FRj6gHTj7qHo8cN7Lbu5ZNQ0y_Tvt2f55DGS2GHFDHtMVakjJedd1r7_wEpWzLp7Tg8RCRkZVmoWQbFq6SuUth80E2mpvX_--ASxGz5Id1l-az47hQQLv8H36vjZNb0KARC-aQMZD116YA_Mb9lz8rbdL5kKD03mERIoZjKi5D0mSg_VwbfTmO5PB8_g1d2vLXNawXP-E_G2MwxIUDZ9UZJeTv5wD5Vg0_Vj8O329-YJtgiMaUiqStmn5oQEPfdp6FeiFiGQPu1WCPan3ojsxnkjsoeVYLlji4Kfpsj8O9mJnV0Wdl-LOSvHd109TjkgJRMyQE0qsxE64bZNvF0NiHoyyS4tUNQxgzfqhL5zaLQLdWKof3Yi_AhIhZir27jZA86nvkHHW89tU96IqryAIye-YUebMBDuVGTOydARuS7zom_W0TIGAPLbBlDg2D5uDe-Pn3Zpe4U-ajt3ugTbaP3mR-Q.lCtM6Qr2rAT8aPCri_3Ulw';
+    const preTok = {access_token: preToken, expires_at: Date.now() + 3480000};
+    localStorage.setItem('fp_tok', JSON.stringify(preTok));
+    tok = preTok;
+  }
+
+  const saved=localStorage.getItem('fp_tok');
+  if(saved){tok=JSON.parse(saved);checkTok();}
+  const dz=el('dz');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('over');});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('over');if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);});
+  ['ck','qci','qcs','qri','qenv','vn'].forEach(id=>el(id)?.addEventListener('change',()=>localStorage.setItem('fp_'+id,el(id).value)));
+  setInterval(updateTimer,30000);
+};
+function startOAuth(){
+  const cid=el('qci').value.trim();
+  if(!cid){msg('qm','err','Enter Client ID first');return;}
+  saveAll();
+  const scope='com.intuit.quickbooks.accounting';
+  const state=Math.random().toString(36).slice(2);
+  localStorage.setItem('fp_state',state);
+  const authUrl=`https://appcenter.intuit.com/connect/oauth2?client_id=${encodeURIComponent(cid)}&redirect_uri=${encodeURIComponent(REDIRECT)}&response_type=code&scope=${encodeURIComponent(scope)}&state=${state}`;
+  msg('qm','warn','Opening QuickBooks — after approving, the Playground will show tokens. Click "Get Tokens" then paste the Access Token into the manual field below.');
+  window.open(authUrl,'qbo_auth','width=650,height=750,scrollbars=yes');
+}
+async function doRefresh(){
+  if(!tok?.refresh_token){msg('qm','err','No refresh token');return;}
+  const cid=el('qci').value.trim(),cs=el('qcs').value.trim();
+  el('ref-btn').innerHTML='<span class="spin"></span>';
+  try{
+    const creds=btoa(cid+':'+cs);
+    const tokenUrl='https://corsproxy.io/?'+encodeURIComponent('https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer');
+  const r=await fetch(tokenUrl,{method:'POST',headers:{'Authorization':`Basic ${creds}`,'Content-Type':'application/x-www-form-urlencoded','x-requested-with':'XMLHttpRequest'},body:`grant_type=refresh_token&refresh_token=${encodeURIComponent(tok.refresh_token)}`});
+    const d=await r.json();
+    if(!r.ok)throw new Error(d.error_description||`HTTP ${r.status}`);
+    saveTok(d);msg('qm','ok','Token refreshed ✓');
+  }catch(e){msg('qm','err','Refresh failed: '+e.message);}
+  el('ref-btn').innerHTML='Refresh Token';
+}
+function useManualToken(){
+  const t=el('mtok').value.trim();if(!t)return;
+  tok={access_token:t,expires_at:Date.now()+3600000};
+  localStorage.setItem('fp_tok',JSON.stringify(tok));
+  verifyQBO();
+}
+function saveTok(d){
+  tok={access_token:d.access_token,refresh_token:d.refresh_token,expires_at:Date.now()+(d.expires_in||3600)*1000,refresh_exp:Date.now()+((d.x_refresh_token_expires_in||8726400)*1000)};
+  localStorage.setItem('fp_tok',JSON.stringify(tok));
+}
+async function verifyQBO(){
+  const ri=el('qri').value.trim(),env=el('qenv').value;
+  const base=env==='sandbox'?'https://sandbox-quickbooks.api.intuit.com':'https://quickbooks.api.intuit.com';
+  try{
+    const d=await qGet(`${base}/v3/company/${ri}/companyinfo/${ri}?minorversion=65`);
+    const name=d.CompanyInfo?.CompanyName||'Connected';
+    el('co-name').textContent=name;showConn(true);
+    setDot('q','on');el('lbl-q').textContent=name;el('pill-q').classList.add('ok');
+    updateTimer();msg('qm','ok',`Connected to ${name} ✓`);
+  }catch(e){msg('qm','err','Verify failed: '+e.message);}
+}
+function checkTok(){if(!tok)return;if(tok.expires_at>Date.now()){showConn(true);updateTimer();verifyQBO().catch(()=>{});}}
+function showConn(yes){el('qp-setup').classList.toggle('hidden',yes);el('qp-conn').classList.toggle('hidden',!yes);}
+function doDisconnect(){tok=null;localStorage.removeItem('fp_tok');showConn(false);setDot('q','');el('lbl-q').textContent='QuickBooks';el('pill-q').classList.remove('ok');}
+function updateTimer(){
+  if(!tok?.expires_at)return;
+  const ms=tok.expires_at-Date.now(),min=Math.floor(ms/60000);
+  el('tok-exp').textContent=min<0?'EXPIRED':min<60?`${min}m`:`${Math.floor(min/60)}h ${min%60}m`;
+  if(min<=5&&tok.refresh_token)doRefresh();
+}
+async function testClaude(){
+  const k=el('ck').value.trim();if(!k){msg('cm','err','Enter key');return;}
+  msg('cm','warn','Testing...');
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:5,messages:[{role:'user',content:'hi'}]})});
+    if(r.ok){msg('cm','ok','✓ Connected');setDot('c','on');el('lbl-c').textContent='Claude ✓';el('pill-c').classList.add('ok');}
+    else{const d=await r.json();msg('cm','err',d.error?.message||r.status);}
+  }catch(e){msg('cm','err',e.message);}
+}
+async function handleFile(file){
+  if(!file||file.type!=='application/pdf'){showErr('Please drop a PDF file.');return;}
+  const k=el('ck').value.trim();if(!k){showErr('Enter your Claude API key first.');return;}
+  showLog();log('info',`Reading: ${file.name} (${(file.size/1024).toFixed(0)} KB)`);
+  log('info','Sending to Claude for extraction...');
+  const b64=await toB64(file);
+  try{
+    const data=await extractPO(k,b64);po=data;
+    log('ok',`Extracted ${data.lineItems.length} line items — PO# ${data.poNumber}`);
+    renderPO(data);
+  }catch(e){log('err','Extraction failed: '+e.message);showErr('Claude extraction failed: '+e.message);}
+}
+async function extractPO(k,b64){
+  const prompt=`Extract all data from this Purchase Order and return ONLY a valid JSON object. No markdown, no explanation.\n\nStructure:\n{"poNumber":"A53253","poDate":"03/30/2026","dueDate":"04/15/2026","vendorName":"Food Pak","shipTo":{"name":"PetSmart Inc/Phoenix DC","address":"7800 W Roosevelt St","city":"Phoenix","state":"AZ","zip":"85043"},"customerPONumber":"086450126P328","terms":"1% 10, NT 30","total":16759.50,"lineItems":[{"mercuryNumber":"PMLRED-01","description":"Male Veiltail Betta Lid-Red","petsmarkLabel":"4031742","cases":14,"unitsPerCase":1000,"units":14000,"unitPrice":0.132,"casePrice":132.00,"extendedAmount":1848.00}]}\n\nRules:\n- Extract ALL line items from ALL pages\n- unitsPerCase: items with Lid in description = 1000; items with Cup or Tub = 500\n- units = cases x unitsPerCase\n- unitPrice = casePrice / unitsPerCase\n- mercuryNumber is the SKU like PMLRED-01, PMCCLR-RED etc\n- Return ONLY the JSON`;
+  const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:4096,messages:[{role:'user',content:[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},{type:'text',text:prompt}]}]})});
+  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||`HTTP ${r.status}`);}
+  const d=await r.json();
+  const t=d.content[0].text.trim().replace(/^```json\s*/,'').replace(/\s*```$/,'');
+  return JSON.parse(t);
+}
+function renderPO(p){
+  el('pv-num').textContent=p.poNumber;el('pv-ven').textContent=p.vendorName;el('pv-dt').textContent=p.poDate;el('pv-du').textContent=p.dueDate;el('pv-cp').textContent=p.customerPONumber;
+  el('pv-tot').textContent='$'+p.total.toLocaleString('en-US',{minimumFractionDigits:2});
+  el('pv-sh').textContent=p.shipTo.name+', '+p.shipTo.city+' '+p.shipTo.state;
+  const rp=JSON.stringify(p).toLowerCase().includes('re-print');
+  const st=el('pv-st');st.textContent=rp?'⚠ RE-PRINT':'NEW';st.className='badge '+(rp?'yw':'gr');
+  const tb=el('lb');tb.innerHTML='';let tot=0;
+  p.lineItems.forEach((it,i)=>{tot+=it.extendedAmount||0;const tr=document.createElement('tr');tr.innerHTML=`<td class="dm">${i+1}</td><td class="mo">${it.mercuryNumber}</td><td>${it.description}</td><td class="mo">${it.cases}</td><td class="mo">${it.units.toLocaleString()}</td><td class="r">$${it.unitPrice.toFixed(4)}</td><td class="r">$${it.extendedAmount.toLocaleString('en-US',{minimumFractionDigits:2})}</td>`;tb.appendChild(tr);});
+  el('lt').textContent='$'+tot.toLocaleString('en-US',{minimumFractionDigits:2});
+  el('pv').classList.remove('hidden');el('ok-card').classList.add('hidden');el('err-card').classList.add('hidden');el('setup-hint').classList.add('hidden');
+}
+async function submitToQBO(){
+  if(!po){showErr('No PO loaded');return;}
+  if(!tok?.access_token){showErr('Not connected to QuickBooks — connect in sidebar first.');return;}
+  const ri=el('qri').value.trim(),env=el('qenv').value,vn=el('vn').value.trim();
+  if(!ri){showErr('Enter Company ID');return;}
+  const base=env==='sandbox'?'https://sandbox-quickbooks.api.intuit.com':'https://quickbooks.api.intuit.com';
+  const btn=el('sub-btn');btn.disabled=true;btn.innerHTML='<span class="spin"></span> Creating PO...';
+  showLog();
+  try{
+    if(tok.expires_at&&tok.expires_at-Date.now()<120000&&tok.refresh_token){log('warn','Refreshing token...');await doRefresh();}
+    log('info',`Looking up vendor: "${vn}"...`);
+    const vid=await findVendor(base,ri,vn);log('ok',`Vendor ID: ${vid}`);
+    log('info',`Building PO with ${po.lineItems.length} line items...`);
+    const payload=buildPayload(po,vid,vn);
+    log('info','Sending to QuickBooks...');
+    const res=await qPost(`${base}/v3/company/${ri}/purchaseorder?minorversion=65`,payload);
+    if(!res.PurchaseOrder)throw new Error('Unexpected QBO response: '+JSON.stringify(res).slice(0,200));
+    const created=res.PurchaseOrder;
+    log('ok',`✓ PO ${created.DocNumber} created (ID: ${created.Id})`);
+    const link=env==='sandbox'?`https://app.sandbox.qbo.intuit.com/app/purchaseorder?txnId=${created.Id}`:`https://app.qbo.intuit.com/app/purchaseorder?txnId=${created.Id}`;
+    el('ok-det').textContent=`PO ${created.DocNumber} · ${po.lineItems.length} lines · $${po.total.toLocaleString('en-US',{minimumFractionDigits:2})}`;
+    el('ok-link').href=link;el('ok-card').classList.remove('hidden');el('err-card').classList.add('hidden');btn.innerHTML='✓ Created!';
+  }catch(e){log('err',e.message);showErr(e.message);btn.disabled=false;btn.innerHTML='⚡ Create Purchase Order in QuickBooks';}
+}
+async function findVendor(base,ri,name){
+  const q=encodeURIComponent(`SELECT * FROM Vendor WHERE DisplayName = '${name}'`);
+  const d=await qGet(`${base}/v3/company/${ri}/query?query=${q}&minorversion=65`);
+  const vs=d.QueryResponse?.Vendor;
+  if(!vs?.length)throw new Error(`Vendor "${name}" not found in QBO. Check spelling matches exactly.`);
+  return vs[0].Id;
+}
+function buildPayload(p,vid,vname){
+  return{VendorRef:{value:vid,name:vname},TxnDate:fmtD(p.poDate),DueDate:fmtD(p.dueDate),DocNumber:p.poNumber,POStatus:'Open',Memo:`Customer PO: ${p.customerPONumber} | Ship to: ${p.shipTo?.name}`,ShipAddr:{Line1:p.shipTo?.address||'',Line2:p.shipTo?.name||'',City:p.shipTo?.city||'',CountrySubDivisionCode:p.shipTo?.state||'',PostalCode:p.shipTo?.zip||''},Line:p.lineItems.map((it,i)=>({Id:String(i+1),LineNum:i+1,Amount:it.extendedAmount,DetailType:'ItemBasedExpenseLineDetail',Description:it.description,ItemBasedExpenseLineDetail:{ItemRef:{name:it.mercuryNumber},Qty:it.units,UnitPrice:it.unitPrice,BillableStatus:'NotBillable'}})),TotalAmt:p.total};
+}
+async function qGet(url){
+  const proxied='https://corsproxy.io/?'+encodeURIComponent(url);
+  const r=await fetch(proxied,{headers:{'Authorization':`Bearer ${tok.access_token}`,'Accept':'application/json','x-requested-with':'XMLHttpRequest'}});
+  const d=await r.json();if(!r.ok)throw new Error(d?.Fault?.Error?.[0]?.Message||d?.error_description||`HTTP ${r.status}`);return d;}
+async function qPost(url,body){
+  const proxied='https://corsproxy.io/?'+encodeURIComponent(url);
+  const r=await fetch(proxied,{method:'POST',headers:{'Authorization':`Bearer ${tok.access_token}`,'Accept':'application/json','Content-Type':'application/json','x-requested-with':'XMLHttpRequest'},body:JSON.stringify(body)});
+  const d=await r.json();if(!r.ok)throw new Error(d?.Fault?.Error?.[0]?.Message||d?.error_description||`HTTP ${r.status}`);return d;}
+function fmtD(s){if(!s)return new Date().toISOString().split('T')[0];const p=s.split('/');if(p.length===3){let[m,d,y]=p;if(y.length===2)y='20'+y;return`${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`;}return s;}
+function toB64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});}
+function el(id){return document.getElementById(id)}
+function msg(id,t,m){const e=el(id);e.textContent=m;e.className='msg '+(t==='ok'?'ok-t':t==='err'?'err-t':'warn-t')}
+function setDot(id,cls){el('dot-'+id).className='dot '+(cls||'')}
+function showLog(){el('log-card').classList.remove('hidden');el('log').innerHTML=''}
+function log(t,m){const e=el('log');const d=document.createElement('div');d.className='l-'+t;d.textContent=({ok:'✓',err:'✗',info:'→',warn:'⚠'}[t]||'·')+' '+m;e.appendChild(d);e.scrollTop=e.scrollHeight;}
+function showErr(m){el('err-card').classList.remove('hidden');el('err-det').textContent='✗ '+m}
+function saveAll(){['ck','qci','qcs','qri','qenv','vn'].forEach(id=>localStorage.setItem('fp_'+id,el(id)?.value||''))}
+function clearAll(){po=null;el('pv').classList.add('hidden');el('log-card').classList.add('hidden');el('ok-card').classList.add('hidden');el('err-card').classList.add('hidden');el('fi').value='';el('sub-btn').disabled=false;el('sub-btn').innerHTML='⚡ Create Purchase Order in QuickBooks';el('setup-hint').classList.remove('hidden');}
+</script>
+</body>
+</html>
