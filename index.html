@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PO Ã¢ÂÂ QuickBooks | Food-Pak</title>
+<title>PO ÃÂ¢ÃÂÃÂ QuickBooks | Food-Pak</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
   :root{--bg:#0f0f0f;--surface:#1a1a1a;--surface2:#222;--border:#2e2e2e;--accent:#00e5a0;--blue:#4d8eff;--text:#f0f0f0;--muted:#777;--error:#ff4f4f;--warn:#ffaa00;--qb:#2CA01C}
@@ -86,7 +86,7 @@
 </head>
 <body>
 <header>
-  <div class="wm">Food<span>-</span>Pak <span>/ POÃ¢ÂÂQBO</span></div>
+  <div class="wm">Food<span>-</span>Pak <span>/ POÃÂ¢ÃÂÃÂQBO</span></div>
   <div class="hst">
     <div class="pill" id="pill-c"><div class="dot" id="dot-c"></div><span id="lbl-c">Claude API</span></div>
     <div class="pill" id="pill-q"><div class="dot" id="dot-q"></div><span id="lbl-q">QuickBooks</span></div>
@@ -106,10 +106,10 @@
       <div id="qp-setup">
         <div class="qpanel" style="margin-bottom:10px">
           <div class="steps">
-            <div class="step"><div class="sn">1</div><div>Go to <a href="https://developer.intuit.com" target="_blank">developer.intuit.com</a> Ã¢ÂÂ PO Submittal app Ã¢ÂÂ Keys &amp; credentials Ã¢ÂÂ Development tab</div></div>
+            <div class="step"><div class="sn">1</div><div>Go to <a href="https://developer.intuit.com" target="_blank">developer.intuit.com</a> ÃÂ¢ÃÂÃÂ PO Submittal app ÃÂ¢ÃÂÃÂ Keys &amp; credentials ÃÂ¢ÃÂÃÂ Development tab</div></div>
             <div class="step"><div class="sn">2</div><div>Copy your <strong>Client ID</strong> and <strong>Client Secret</strong></div></div>
-            <div class="step"><div class="sn">3</div><div>In QBO: Settings Ã¢ÂÂ Account and Settings Ã¢ÂÂ scroll to bottom Ã¢ÂÂ copy <strong>Company ID</strong></div></div>
-            <div class="step"><div class="sn">4</div><div>Click Connect Ã¢ÂÂ sign in to QBO in the popup, then copy the access token from the OAuth Playground page back here</div></div>
+            <div class="step"><div class="sn">3</div><div>In QBO: Settings ÃÂ¢ÃÂÃÂ Account and Settings ÃÂ¢ÃÂÃÂ scroll to bottom ÃÂ¢ÃÂÃÂ copy <strong>Company ID</strong></div></div>
+            <div class="step"><div class="sn">4</div><div>Click Connect ÃÂ¢ÃÂÃÂ sign in to QBO in the popup, then copy the access token from the OAuth Playground page back here</div></div>
           </div>
         </div>
         <div class="f"><label>Client ID</label><input type="text" id="qci" placeholder="AB..." value="ABiA6OppO3t9lKobVirJElmYRbKUVxSgFfzjRyrQINElwnIH2G" /></div>
@@ -117,10 +117,10 @@
         <div class="f">
           <label>Company ID (Realm ID)</label>
           <input type="text" id="qri" placeholder="9341456737227500" value="9341456737227500" />
-          <div class="hint">QBO Ã¢ÂÂ Ã¢ÂÂ Settings Ã¢ÂÂ Account and Settings Ã¢ÂÂ bottom of page</div>
+          <div class="hint">QBO ÃÂ¢ÃÂÃÂ ÃÂ¢ÃÂÃÂ Settings ÃÂ¢ÃÂÃÂ Account and Settings ÃÂ¢ÃÂÃÂ bottom of page</div>
         </div>
         <div class="f"><label>Environment</label><select id="qenv"><option value="production">Production</option><option value="sandbox" selected>Sandbox (Development)</option></select></div>
-        <button class="btn bq" id="conn-btn" onclick="startOAuth()">Ã°ÂÂÂ Connect to QuickBooks</button>
+        <button class="btn bq" id="conn-btn" onclick="startOAuth()">ÃÂ°ÃÂÃÂÃÂ Connect to QuickBooks</button>
         <div class="msg" id="qm"></div>
         <details>
           <summary>Paste token manually</summary>
@@ -134,10 +134,10 @@
       <div id="qp-conn" class="hidden">
         <div class="qpanel conn">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-            <span style="font-size:20px">Ã¢ÂÂ</span>
+            <span style="font-size:20px">ÃÂ¢ÃÂÃÂ</span>
             <div>
               <div style="font-size:13px;font-weight:500;color:var(--accent)" id="co-name">Connected</div>
-              <div style="font-family:DM Mono,monospace;font-size:10px;color:var(--muted)">Token expires in <span id="tok-exp" style="color:var(--warn)">Ã¢ÂÂ</span></div>
+              <div style="font-family:DM Mono,monospace;font-size:10px;color:var(--muted)">Token expires in <span id="tok-exp" style="color:var(--warn)">ÃÂ¢ÃÂÃÂ</span></div>
             </div>
           </div>
           <div style="display:flex;gap:6px">
@@ -155,11 +155,11 @@
   </div>
   <div class="main">
     <div class="info-box" id="setup-hint">
-      Ã°ÂÂÂ <strong>Setup:</strong> (1) Enter Claude API key Ã¢ÂÂ Test. (2) Your QBO credentials &amp; Realm ID are pre-filled. (3) Click Connect to QuickBooks, approve in the popup. (4) On the Playground page that opens, your <strong>Access Token</strong> is already shown Ã¢ÂÂ copy it and paste into the manual token field below the Connect button. Done!
+      ÃÂ°ÃÂÃÂÃÂ <strong>Setup:</strong> (1) Enter Claude API key ÃÂ¢ÃÂÃÂ Test. (2) Your QBO credentials &amp; Realm ID are pre-filled. (3) Click Connect to QuickBooks, approve in the popup. (4) On the Playground page that opens, your <strong>Access Token</strong> is already shown ÃÂ¢ÃÂÃÂ copy it and paste into the manual token field below the Connect button. Done!
     </div>
     <div class="dz" id="dz">
       <input type="file" accept=".pdf" id="fi" onchange="handleFile(this.files[0])" />
-      <span style="font-size:32px">Ã°ÂÂÂ</span>
+      <span style="font-size:32px">ÃÂ°ÃÂÃÂÃÂ</span>
       <h3>Drop PO PDF here</h3>
       <p>Southeastern Paper Group / BradyPlus purchase orders</p>
     </div>
@@ -169,7 +169,7 @@
           <h3>Parsed Purchase Order</h3>
           <span class="badge bl" id="pv-num"></span>
           <span class="badge" id="pv-st"></span>
-          <button class="btn bs" onclick="clearAll()" style="margin-left:auto">Ã¢ÂÂ Clear</button>
+          <button class="btn bs" onclick="clearAll()" style="margin-left:auto">ÃÂ¢ÃÂÃÂ Clear</button>
         </div>
         <div class="cb">
           <div class="mg">
@@ -187,10 +187,10 @@
           </table>
         </div>
       </div>
-      <button class="btn ba" id="sub-btn" onclick="submitToQBO()" style="margin-top:6px">Ã¢ÂÂ¡ Create Purchase Order in QuickBooks</button>
+      <button class="btn ba" id="sub-btn" onclick="submitToQBO()" style="margin-top:6px">ÃÂ¢ÃÂÃÂ¡ Create Purchase Order in QuickBooks</button>
     </div>
     <div id="log-card" class="card hidden"><div class="ch"><h3>Log</h3></div><div class="cb"><div class="lb" id="log"></div></div></div>
-    <div id="ok-card" class="hidden"><div class="sb-ok"><div style="font-size:28px">Ã¢ÂÂ</div><div><h3>Purchase Order Created!</h3><p id="ok-det"></p><a id="ok-link" href="#" target="_blank">Open in QuickBooks Ã¢ÂÂ</a></div></div></div>
+    <div id="ok-card" class="hidden"><div class="sb-ok"><div style="font-size:28px">ÃÂ¢ÃÂÃÂ</div><div><h3>Purchase Order Created!</h3><p id="ok-det"></p><a id="ok-link" href="#" target="_blank">Open in QuickBooks ÃÂ¢ÃÂÃÂ</a></div></div></div>
     <div id="err-card" class="hidden"><div class="eb" id="err-det"></div></div>
   </div>
 </div>
@@ -225,7 +225,7 @@ function startOAuth(){
   const state=Math.random().toString(36).slice(2);
   localStorage.setItem('fp_state',state);
   const authUrl=`https://appcenter.intuit.com/connect/oauth2?client_id=${encodeURIComponent(cid)}&redirect_uri=${encodeURIComponent(REDIRECT)}&response_type=code&scope=${encodeURIComponent(scope)}&state=${state}`;
-  msg('qm','warn','Opening QuickBooks Ã¢ÂÂ after approving, the Playground will show tokens. Click "Get Tokens" then paste the Access Token into the manual field below.');
+  msg('qm','warn','Opening QuickBooks ÃÂ¢ÃÂÃÂ after approving, the Playground will show tokens. Click "Get Tokens" then paste the Access Token into the manual field below.');
   window.open(authUrl,'qbo_auth','width=650,height=750,scrollbars=yes');
 }
 async function doRefresh(){
@@ -238,7 +238,7 @@ async function doRefresh(){
   const r=await fetch(tokenUrl,{method:'POST',headers:{'Authorization':`Basic ${creds}`,'Content-Type':'application/x-www-form-urlencoded','x-requested-with':'XMLHttpRequest'},body:`grant_type=refresh_token&refresh_token=${encodeURIComponent(tok.refresh_token)}`});
     const d=await r.json();
     if(!r.ok)throw new Error(d.error_description||`HTTP ${r.status}`);
-    saveTok(d);msg('qm','ok','Token refreshed Ã¢ÂÂ');
+    saveTok(d);msg('qm','ok','Token refreshed ÃÂ¢ÃÂÃÂ');
   }catch(e){msg('qm','err','Refresh failed: '+e.message);}
   el('ref-btn').innerHTML='Refresh Token';
 }
@@ -260,7 +260,7 @@ async function verifyQBO(){
     const name=d.CompanyInfo?.CompanyName||'Connected';
     el('co-name').textContent=name;showConn(true);
     setDot('q','on');el('lbl-q').textContent=name;el('pill-q').classList.add('ok');
-    updateTimer();msg('qm','ok',`Connected to ${name} Ã¢ÂÂ`);
+    updateTimer();msg('qm','ok',`Connected to ${name} ÃÂ¢ÃÂÃÂ`);
   }catch(e){msg('qm','err','Verify failed: '+e.message);}
 }
 function checkTok(){if(!tok)return;if(tok.expires_at>Date.now()){showConn(true);updateTimer();verifyQBO().catch(()=>{});}}
@@ -277,7 +277,7 @@ async function testClaude(){
   msg('cm','warn','Testing...');
   try{
     const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:5,messages:[{role:'user',content:'hi'}]})});
-    if(r.ok){msg('cm','ok','Ã¢ÂÂ Connected');setDot('c','on');el('lbl-c').textContent='Claude Ã¢ÂÂ';el('pill-c').classList.add('ok');}
+    if(r.ok){msg('cm','ok','ÃÂ¢ÃÂÃÂ Connected');setDot('c','on');el('lbl-c').textContent='Claude ÃÂ¢ÃÂÃÂ';el('pill-c').classList.add('ok');}
     else{const d=await r.json();msg('cm','err',d.error?.message||r.status);}
   }catch(e){msg('cm','err',e.message);}
 }
@@ -289,7 +289,7 @@ async function handleFile(file){
   const b64=await toB64(file);
   try{
     const data=await extractPO(k,b64);po=data;
-    log('ok',`Extracted ${data.lineItems.length} line items Ã¢ÂÂ PO# ${data.poNumber}`);
+    log('ok',`Extracted ${data.lineItems.length} line items ÃÂ¢ÃÂÃÂ PO# ${data.poNumber}`);
     renderPO(data);
   }catch(e){log('err','Extraction failed: '+e.message);showErr('Claude extraction failed: '+e.message);}
 }
@@ -306,7 +306,7 @@ function renderPO(p){
   el('pv-tot').textContent='$'+p.total.toLocaleString('en-US',{minimumFractionDigits:2});
   el('pv-sh').textContent=p.shipTo.name+', '+p.shipTo.city+' '+p.shipTo.state;
   const rp=JSON.stringify(p).toLowerCase().includes('re-print');
-  const st=el('pv-st');st.textContent=rp?'Ã¢ÂÂ  RE-PRINT':'NEW';st.className='badge '+(rp?'yw':'gr');
+  const st=el('pv-st');st.textContent=rp?'ÃÂ¢ÃÂÃÂ  RE-PRINT':'NEW';st.className='badge '+(rp?'yw':'gr');
   const tb=el('lb');tb.innerHTML='';let tot=0;
   p.lineItems.forEach((it,i)=>{tot+=it.extendedAmount||0;const tr=document.createElement('tr');tr.innerHTML=`<td class="dm">${i+1}</td><td class="mo">${it.mercuryNumber}</td><td>${it.description}</td><td class="mo">${it.cases}</td><td class="mo">${it.units.toLocaleString()}</td><td class="r">$${it.unitPrice.toFixed(4)}</td><td class="r">$${it.extendedAmount.toLocaleString('en-US',{minimumFractionDigits:2})}</td>`;tb.appendChild(tr);});
   el('lt').textContent='$'+tot.toLocaleString('en-US',{minimumFractionDigits:2});
@@ -314,7 +314,7 @@ function renderPO(p){
 }
 async function submitToQBO(){
   if(!po){showErr('No PO loaded');return;}
-  if(!tok?.access_token){showErr('Not connected to QuickBooks Ã¢ÂÂ connect in sidebar first.');return;}
+  if(!tok?.access_token){showErr('Not connected to QuickBooks ÃÂ¢ÃÂÃÂ connect in sidebar first.');return;}
   const ri=el('qri').value.trim(),env=el('qenv').value,vn=el('vn').value.trim();
   if(!ri){showErr('Enter Company ID');return;}
   const base=env==='sandbox'?'https://sandbox-quickbooks.api.intuit.com':'https://quickbooks.api.intuit.com';
@@ -330,11 +330,11 @@ async function submitToQBO(){
     const res=await qPost(`${base}/v3/company/${ri}/purchaseorder?minorversion=65`,payload);
     if(!res.PurchaseOrder)throw new Error('Unexpected QBO response: '+JSON.stringify(res).slice(0,200));
     const created=res.PurchaseOrder;
-    log('ok',`Ã¢ÂÂ PO ${created.DocNumber} created (ID: ${created.Id})`);
+    log('ok',`ÃÂ¢ÃÂÃÂ PO ${created.DocNumber} created (ID: ${created.Id})`);
     const link=env==='sandbox'?`https://app.sandbox.qbo.intuit.com/app/purchaseorder?txnId=${created.Id}`:`https://app.qbo.intuit.com/app/purchaseorder?txnId=${created.Id}`;
-    el('ok-det').textContent=`PO ${created.DocNumber} ÃÂ· ${po.lineItems.length} lines ÃÂ· $${po.total.toLocaleString('en-US',{minimumFractionDigits:2})}`;
-    el('ok-link').href=link;el('ok-card').classList.remove('hidden');el('err-card').classList.add('hidden');btn.innerHTML='Ã¢ÂÂ Created!';
-  }catch(e){log('err',e.message);showErr(e.message);btn.disabled=false;btn.innerHTML='Ã¢ÂÂ¡ Create Purchase Order in QuickBooks';}
+    el('ok-det').textContent=`PO ${created.DocNumber} ÃÂÃÂ· ${po.lineItems.length} lines ÃÂÃÂ· $${po.total.toLocaleString('en-US',{minimumFractionDigits:2})}`;
+    el('ok-link').href=link;el('ok-card').classList.remove('hidden');el('err-card').classList.add('hidden');btn.innerHTML='ÃÂ¢ÃÂÃÂ Created!';
+  }catch(e){log('err',e.message);showErr(e.message);btn.disabled=false;btn.innerHTML='ÃÂ¢ÃÂÃÂ¡ Create Purchase Order in QuickBooks';}
 }
 async function findVendor(base,ri,name){
   const q=encodeURIComponent(`SELECT * FROM Vendor WHERE DisplayName = '${name}'`);
@@ -360,10 +360,10 @@ function el(id){return document.getElementById(id)}
 function msg(id,t,m){const e=el(id);e.textContent=m;e.className='msg '+(t==='ok'?'ok-t':t==='err'?'err-t':'warn-t')}
 function setDot(id,cls){el('dot-'+id).className='dot '+(cls||'')}
 function showLog(){el('log-card').classList.remove('hidden');el('log').innerHTML=''}
-function log(t,m){const e=el('log');const d=document.createElement('div');d.className='l-'+t;d.textContent=({ok:'Ã¢ÂÂ',err:'Ã¢ÂÂ',info:'Ã¢ÂÂ',warn:'Ã¢ÂÂ '}[t]||'ÃÂ·')+' '+m;e.appendChild(d);e.scrollTop=e.scrollHeight;}
-function showErr(m){el('err-card').classList.remove('hidden');el('err-det').textContent='Ã¢ÂÂ '+m}
+function log(t,m){const e=el('log');const d=document.createElement('div');d.className='l-'+t;d.textContent=({ok:'ÃÂ¢ÃÂÃÂ',err:'ÃÂ¢ÃÂÃÂ',info:'ÃÂ¢ÃÂÃÂ',warn:'ÃÂ¢ÃÂÃÂ '}[t]||'ÃÂÃÂ·')+' '+m;e.appendChild(d);e.scrollTop=e.scrollHeight;}
+function showErr(m){el('err-card').classList.remove('hidden');el('err-det').textContent='ÃÂ¢ÃÂÃÂ '+m}
 function saveAll(){['ck','qci','qcs','qri','qenv','vn'].forEach(id=>localStorage.setItem('fp_'+id,el(id)?.value||''))}
-function clearAll(){po=null;el('pv').classList.add('hidden');el('log-card').classList.add('hidden');el('ok-card').classList.add('hidden');el('err-card').classList.add('hidden');el('fi').value='';el('sub-btn').disabled=false;el('sub-btn').innerHTML='Ã¢ÂÂ¡ Create Purchase Order in QuickBooks';el('setup-hint').classList.remove('hidden');}
+function clearAll(){po=null;el('pv').classList.add('hidden');el('log-card').classList.add('hidden');el('ok-card').classList.add('hidden');el('err-card').classList.add('hidden');el('fi').value='';el('sub-btn').disabled=false;el('sub-btn').innerHTML='ÃÂ¢ÃÂÃÂ¡ Create Purchase Order in QuickBooks';el('setup-hint').classList.remove('hidden');}
 </script>
 </body>
 </html>
